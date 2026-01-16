@@ -51,3 +51,11 @@
 ;; Save place in files
 (save-place-mode 1)
 
+(use-package dashboard
+  :config
+  (setq dashboard-startup-banner 'logo
+        dashboard-center-content t
+        dashboard-items '((recents  . 5)
+                          (projects . 5)))
+  (dashboard-setup-startup-hook))
+

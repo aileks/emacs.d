@@ -15,9 +15,16 @@
 
 ;; Dired + extensions
 (require 'dired-x)
-(setq dired-listing-switches "-lh")
+(setq dired-listing-switches "-al")
 (setq dired-omit-files "^\\.?#\\|^\\..*$")
-(setq dired-omit-mode t)
 (add-hook 'dired-mode-hook #'dired-hide-details-mode)
+(add-hook 'dired-mode-hook #'dired-omit-mode)
+
+(defun aileks/dired-omit-mode-toggle ()
+  (interactive)
+  (if dired-omit-mode
+      (dired-omit-mode -1)
+    (dired-omit-mode 1))
+  (revert-buffer))
 
 (global-set-key (kbd "C-x C-b") #'ibuffer)

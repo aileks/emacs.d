@@ -41,6 +41,9 @@
 (global-set-key (kbd "C-c s f") #'consult-find)
 (global-set-key (kbd "C-c s m") #'consult-imenu)
 
+;; Dired
+(global-set-key (kbd "C-c o") #'aileks/dired-omit-mode-toggle)
+
 ;; Project search
 (global-set-key (kbd "C-c p f") #'consult-project-extra-find)
 (global-set-key (kbd "C-c p r") #'consult-project-extra-ripgrep)

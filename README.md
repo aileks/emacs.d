@@ -1,6 +1,6 @@
 # Emacs
 
-Keybinds here: https://github.com/aileks/emacs.d/wiki
+Personal Emacs config for this dotfiles repo.
 
 ## Plugins
 
@@ -44,5 +44,8 @@ Keybinds here: https://github.com/aileks/emacs.d/wiki
 - ws-butler
 - eat
 - dape
+- dashboard
 
 ## Keybinds
+
+See the wiki: https://github.com/aileks/dotfiles/wiki
