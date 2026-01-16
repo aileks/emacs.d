@@ -19,14 +19,13 @@
   (require 'corfu-popupinfo)
   (corfu-popupinfo-mode 1))
 
+;; Nerd icons: icons in completion + gutter
 (use-package nerd-icons)
-
 (use-package nerd-icons-completion
   :after (marginalia nerd-icons)
   :config
   (nerd-icons-completion-mode)
   (nerd-icons-completion-marginalia-setup))
-
 (use-package kind-icon
   :after corfu
   :custom
@@ -34,7 +33,6 @@
   (kind-icon-use-icons t)
   :config
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
-
 
 ;; Orderless: fuzzy matching
 (use-package orderless
@@ -49,16 +47,11 @@
   :bind (:map minibuffer-local-map ("M-A" . marginalia-cycle))
   :init (marginalia-mode))
 
-;; Savehist: remember completion history
-(use-package savehist
-  :init (savehist-mode))
-
 ;; Consult: search + navigation
 (use-package consult
   :bind (("M-s r" . consult-ripgrep)
          ("M-s l" . consult-line)
          ("C-x b" . consult-buffer)))
-
 (use-package consult-dir
   :after consult
   :bind ("C-x C-d" . consult-dir))
@@ -67,7 +60,6 @@
 (use-package embark
   :bind (("C-." . embark-act))
   :custom (prefix-help-command #'embark-prefix-help-command))
-
 (use-package embark-consult
   :after (embark consult))
 
@@ -89,3 +81,7 @@
          ("C-h k" . helpful-key)
          ("C-h x" . helpful-command)
          ("C-h F" . helpful-function)))
+
+(use-package savehist
+  :init (savehist-mode))
+

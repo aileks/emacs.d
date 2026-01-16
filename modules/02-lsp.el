@@ -1,6 +1,5 @@
 ;;; -*- lexical-binding: t -*-
 
-;; Eglot (built-in to Emacs 29+)
 (use-package eglot
   :ensure nil
   :hook ((c-mode c++-mode c-ts-mode c++-ts-mode zig-mode
@@ -26,23 +25,17 @@
   :ensure (:host github :repo "jdtsmith/eglot-booster")
   :config (eglot-booster-mode))
 
-;; Tree-sitter auto-install
 (use-package treesit-auto
-
   :custom
   (treesit-auto-install t)
   :config
   (global-treesit-auto-mode))
 
 (use-package markdown-mode)
-
 (use-package yaml-mode)
-
 (use-package json-mode)
-
 (use-package toml-mode)
 
-;; Language servers
 (with-eval-after-load 'eglot
   (setq eglot-server-programs
         (append eglot-server-programs
@@ -61,7 +54,6 @@
                   (web-mode . ("vscode-html-language-server" "--stdio"))
                   (css-mode . ("vscode-css-language-server" "--stdio"))))))
 
-;; Prefer tree-sitter modes
 (setq major-mode-remap-alist
       '((c-mode . c-ts-mode)
         (c++-mode . c++-ts-mode)
@@ -70,7 +62,6 @@
         (typescript-mode . typescript-ts-mode)
         (sh-mode . bash-ts-mode)))
 
-;; Format on save
 (use-package apheleia
   :config
   (setf (alist-get 'prettier apheleia-formatters)
@@ -91,7 +82,6 @@
         '(sh-mode bash-ts-mode))
   (add-hook 'prog-mode-hook #'apheleia-mode))
 
-;; Flymake: Shellcheck integration
 (use-package flymake-shellcheck
   :hook ((sh-mode bash-ts-mode) . flymake-shellcheck-load)
   :custom (flymake-shellcheck-checker 'sh-shellcheck))

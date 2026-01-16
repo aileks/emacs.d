@@ -1,15 +1,12 @@
 ;;; -*- lexical-binding: t -*-
 
-;; Project management (built-in)
 (setq project-mode-line t)
 
 (use-package ibuffer-vc
   :hook (ibuffer . ibuffer-vc-set-filter-groups-by-vc-root))
-
 (use-package project
   :ensure nil
   :bind-keymap ("C-x p" . project-prefix-map))
-
 (use-package consult-project-extra
   :after consult)
 
