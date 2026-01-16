@@ -44,6 +44,8 @@
 (setq use-dialog-box nil)
 (setq initial-scratch-message nil)
 
+(setq-default line-spacing 0.2)
+
 (blink-cursor-mode 0)
 (save-place-mode 1)
 

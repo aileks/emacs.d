@@ -85,3 +85,13 @@
 (use-package flymake-shellcheck
   :hook ((sh-mode bash-ts-mode) . flymake-shellcheck-load)
   :custom (flymake-shellcheck-checker 'sh-shellcheck))
+
+(use-package flymake
+  :ensure nil
+  :custom
+  (flymake-indicator-type 'margins)
+  (flymake-margin-indicator-position 'left-margin)
+  (flymake-margin-indicators-string
+   '((error "" compilation-error)
+     (warning "" compilation-warning)
+     (note "" compilation-info))))
