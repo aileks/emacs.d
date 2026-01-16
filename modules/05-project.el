@@ -15,16 +15,39 @@
 
 ;; Dired + extensions
 (require 'dired-x)
-(setq dired-listing-switches "-al")
-(setq dired-omit-files "^\\.?#\\|^\\..*$")
-(add-hook 'dired-mode-hook #'dired-hide-details-mode)
-(add-hook 'dired-mode-hook #'dired-omit-mode)
+(setq dired-listing-switches "-alh")
+(setq dired-omit-mode nil)
 
-(defun aileks/dired-omit-mode-toggle ()
+(defun aileks/dired--gitignored-files ()
+  (let* ((dir (dired-current-directory))
+         (root (locate-dominating-file dir ".git")))
+    (when root
+      (let* ((default-directory root)
+             (output (shell-command-to-string
+                      "git ls-files -o -i --exclude-standard --directory"))
+             (ignored (split-string output "\n" t))
+             (dir-truename (file-truename dir)))
+        (delq nil
+              (mapcar (lambda (entry)
+                        (let* ((abs (expand-file-name entry root))
+                               (abs (file-truename (directory-file-name abs))))
+                          (when (string-prefix-p dir-truename abs)
+                            (let ((rel (file-relative-name abs dir)))
+                              (unless (string-match-p "/" rel)
+                                rel)))))
+                      ignored))))))
+
+(defun aileks/dired-toggle-ignored ()
   (interactive)
   (if dired-omit-mode
-      (dired-omit-mode -1)
-    (dired-omit-mode 1))
-  (revert-buffer))
+      (progn
+        (setq-local dired-omit-files nil)
+        (dired-omit-mode -1))
+    (let ((ignored (aileks/dired--gitignored-files)))
+      (setq-local dired-omit-files
+                  (when ignored
+                    (concat "\\`" (regexp-opt ignored) "\\'")))
+      (dired-omit-mode 1)))
+  (dired-revert))
 
 (global-set-key (kbd "C-x C-b") #'ibuffer)

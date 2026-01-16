@@ -52,10 +52,19 @@
 (save-place-mode 1)
 
 (use-package dashboard
+  :demand t
+  :init
+  (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
   :config
   (setq dashboard-startup-banner 'logo
         dashboard-center-content t
         dashboard-items '((recents  . 5)
                           (projects . 5)))
-  (dashboard-setup-startup-hook))
+  (dashboard-setup-startup-hook)
+  (defun aileks/dashboard-open (&optional frame)
+    (when (frame-live-p frame)
+      (select-frame frame))
+    (dashboard-open))
+  (add-hook 'after-init-hook #'aileks/dashboard-open)
+  (add-hook 'server-after-make-frame-hook #'aileks/dashboard-open))
 

@@ -52,3 +52,6 @@
 (global-set-key (kbd "C-c g t") #'magit-todos-list)
 (global-set-key (kbd "C-c g b") #'magit-blame-addition)
 (global-set-key (kbd "C-c g y") #'browse-at-remote)
+
+;; Dired toggle
+(global-set-key (kbd "C-c o") #'aileks/dired-toggle-ignored)
