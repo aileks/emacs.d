@@ -41,6 +41,9 @@
 (global-set-key (kbd "C-c s f") #'consult-find)
 (global-set-key (kbd "C-c s m") #'consult-imenu)
 
+;; Zen toggle
+(global-set-key (kbd "C-c z") #'olivetti-mode)
+
 ;; Dired
 (global-set-key (kbd "C-c o") #'aileks/dired-omit-mode-toggle)
 

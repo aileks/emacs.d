@@ -23,7 +23,7 @@
 
 (use-package eglot-booster
   :after eglot
-  :straight (:host github :repo "jdtsmith/eglot-booster")
+  :ensure (:host github :repo "jdtsmith/eglot-booster")
   :config (eglot-booster-mode))
 
 ;; Tree-sitter auto-install

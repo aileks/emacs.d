@@ -1,6 +1,5 @@
 ;;; -*- lexical-binding: t -*-
 
-;; Purist: no backup clutter
 (setq make-backup-files nil
       auto-save-default nil
       create-lockfiles nil
@@ -8,7 +7,6 @@
       visible-bell nil
       require-final-newline t)
 
-;; Confirm exit
 (setq confirm-kill-emacs 'y-or-n-p)
 
 ;; UTF-8 everywhere
@@ -23,8 +21,17 @@
 (column-number-mode 1)
 (recentf-mode 1)
 
-;; Line numbers only in code
+;; Line numbers in code + writing
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
+(add-hook 'text-mode-hook #'display-line-numbers-mode)
+(add-hook 'org-mode-hook #'display-line-numbers-mode)
+
+(use-package olivetti
+  :hook ((text-mode . olivetti-mode)
+         (org-mode . olivetti-mode))
+  :custom
+  (olivetti-body-width 100)
+  (olivetti-style 'fringe))
 
 ;; Prefer y/n
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -35,9 +42,10 @@
       scroll-step 1
       scroll-preserve-screen-position t)
 
-;; Indentation
+;; Indentation + print width
 (setq-default indent-tabs-mode nil
-              tab-width 4)
+              tab-width 4
+              fill-column 100)
 
 ;; No dialog prompts
 (setq use-dialog-box nil)
@@ -65,6 +73,6 @@
     (when (frame-live-p frame)
       (select-frame frame))
     (dashboard-open))
-  (add-hook 'after-init-hook #'aileks/dashboard-open)
+  (add-hook 'elpaca-after-init-hook #'aileks/dashboard-open)
   (add-hook 'server-after-make-frame-hook #'aileks/dashboard-open))
 
