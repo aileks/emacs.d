@@ -66,6 +66,7 @@
         dashboard-center-content t
         dashboard-items '((recents  . 5)
                           (projects . 5)))
+  (set-face-attribute 'dashboard-banner-logo-title nil :family "Monaspace Xenon NF")
   (dashboard-setup-startup-hook)
   (defun aileks/dashboard-open (&optional frame)
     (when (frame-live-p frame)

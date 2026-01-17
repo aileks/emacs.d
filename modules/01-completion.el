@@ -17,7 +17,10 @@
   :config
   (global-corfu-mode)
   (require 'corfu-popupinfo)
-  (corfu-popupinfo-mode 1))
+  (corfu-popupinfo-mode 1)
+  (set-face-attribute 'corfu-default nil :height 0.9)
+  (set-face-attribute 'corfu-current nil :height 0.9)
+  (set-face-attribute 'corfu-popupinfo nil :height 0.9))
 
 ;; Nerd icons: icons in completion + gutter
 (use-package nerd-icons)
