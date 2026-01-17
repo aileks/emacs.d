@@ -9,7 +9,7 @@
                               :ref nil :depth 1 :inherit ignore
                               :files (:defaults "elpaca-test.el" (:exclude "extensions"))
                               :build (:not elpaca--activate-package)))
-(let* ((repo (expand-file-name "elpaca/" elpaca-repos-directory))
+(let* ((repo  (expand-file-name "elpaca/" elpaca-repos-directory))
        (build (expand-file-name "elpaca/" elpaca-builds-directory))
        (order (cdr elpaca-order))
        (default-directory repo))
@@ -19,12 +19,10 @@
     (when (<= emacs-major-version 28) (require 'subr-x))
     (condition-case-unless-debug err
         (if-let* ((buffer (pop-to-buffer-same-window "*elpaca-bootstrap*"))
-                  ((zerop (apply #'call-process
-                                 `("git" nil ,buffer t "clone"
-                                   ,@(when-let* ((depth (plist-get order :depth)))
-                                       (list (format "--depth=%d" depth)
-                                             "--no-single-branch"))
-                                   ,(plist-get order :repo) ,repo))))
+                  ((zerop (apply #'call-process `("git" nil ,buffer t "clone"
+                                                  ,@(when-let* ((depth (plist-get order :depth)))
+                                                      (list (format "--depth=%d" depth) "--no-single-branch"))
+                                                  ,(plist-get order :repo) ,repo))))
                   ((zerop (call-process "git" nil buffer t "checkout"
                                         (or (plist-get order :ref) "--"))))
                   (emacs (concat invocation-directory invocation-name))
@@ -44,11 +42,12 @@
 
 (elpaca elpaca-use-package
   (elpaca-use-package-mode))
+
 (setq use-package-always-ensure t)
 
+;; Load my custom theme
 (add-to-list 'custom-theme-load-path
              (expand-file-name "themes" user-emacs-directory))
-
 (add-hook 'elpaca-after-init-hook
           (lambda ()
             (load-theme 'ashen t)))

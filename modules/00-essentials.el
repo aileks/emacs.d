@@ -41,9 +41,9 @@
               tab-width 4
               fill-column 100)
 
-(setq js-indent-level 4
-      js2-indent-level 4
-      typescript-indent-level 4
+(setq js-indent-level 2
+      js2-indent-level 2
+      typescript-indent-level 2
       python-indent-offset 4
       c-basic-offset 4
       css-indent-offset 4

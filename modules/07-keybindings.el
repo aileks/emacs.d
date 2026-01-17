@@ -2,7 +2,7 @@
 
 (use-package which-key
   :defer 5
-  :custom (which-key-idle-delay 0.8)
+  :custom (which-key-idle-delay 0.6)
   :config (which-key-mode))
 
 ;; mood-line: status bar
@@ -39,7 +39,7 @@
 (global-set-key (kbd "C-c s f") #'consult-find)
 (global-set-key (kbd "C-c s m") #'consult-imenu)
 (global-set-key (kbd "C-c z") #'olivetti-mode)
-(global-set-key (kbd "C-c o") #'aileks/dired-omit-mode-toggle)
+(global-set-key (kbd "C-c o") #'aileks/dired-toggle-ignored)
 (global-set-key (kbd "C-c p f") #'consult-project-extra-find)
 (global-set-key (kbd "C-c p r") #'consult-project-extra-ripgrep)
 (global-set-key (kbd "C-c g t") #'magit-todos-list)

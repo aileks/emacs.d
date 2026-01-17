@@ -1,4 +1,4 @@
-.cache/
+*.sqlite
 history
 recentf
 places
@@ -8,6 +8,7 @@ elpa/
 eln-cache/
 auto-save-list/
 snippets/
+.cache/
 tutorial/
 elpaca/
 var/

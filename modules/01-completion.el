@@ -18,9 +18,9 @@
   (global-corfu-mode)
   (require 'corfu-popupinfo)
   (corfu-popupinfo-mode 1)
-  (set-face-attribute 'corfu-default nil :height 0.9)
-  (set-face-attribute 'corfu-current nil :height 0.9)
-  (set-face-attribute 'corfu-popupinfo nil :height 0.9))
+  (set-face-attribute 'corfu-default nil :height 1.0)
+  (set-face-attribute 'corfu-current nil :height 1.0)
+  (set-face-attribute 'corfu-popupinfo nil :height 1.0))
 
 ;; Nerd icons: icons in completion + gutter
 (use-package nerd-icons)
@@ -34,7 +34,7 @@
   :custom
   (kind-icon-default-face 'corfu-default)
   (kind-icon-use-icons t)
-  (kind-icon-default-style '(:padding 0 :stroke 0 :margin 0 :radius 0 :height 0.85 :scale 1.0 :background nil))
+  (kind-icon-default-style '(:padding 0 :stroke 0 :margin 0 :radius 0 :height 0.25 :scale 0.5 :background nil))
   :config
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
@@ -87,5 +87,6 @@
          ("C-h F" . helpful-function)))
 
 (use-package savehist
+  :ensure nil
   :init (savehist-mode))
 

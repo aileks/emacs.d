@@ -1,7 +1,10 @@
 ;;; -*- lexical-binding: t -*-
 
 ;; Magit: minimal git client
+(use-package transient)
 (use-package magit
+  :after transient
+  :commands (magit-status magit-dispatch)
   :bind (("C-x g" . magit-status)))
 (use-package diff-hl
   :hook ((prog-mode . diff-hl-mode)
@@ -31,7 +34,7 @@
 ;; Forge: interaction with sites like GitHub, GitLab, etc.
 (use-package forge
   :after magit
-  :config
+  :init
   (setq forge-owned-accounts nil))
 
 (use-package git-modes)
