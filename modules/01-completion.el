@@ -31,6 +31,7 @@
   :custom
   (kind-icon-default-face 'corfu-default)
   (kind-icon-use-icons t)
+  (kind-icon-default-style '(:padding 0 :stroke 0 :margin 0 :radius 0 :height 0.85 :scale 1.0 :background nil))
   :config
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 

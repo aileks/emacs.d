@@ -41,6 +41,14 @@
               tab-width 4
               fill-column 100)
 
+(setq js-indent-level 4
+      js2-indent-level 4
+      typescript-indent-level 4
+      python-indent-offset 4
+      c-basic-offset 4
+      css-indent-offset 4
+      sgml-basic-offset 4)
+
 (setq use-dialog-box nil)
 (setq initial-scratch-message nil)
 

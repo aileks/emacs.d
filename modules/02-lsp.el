@@ -29,7 +29,11 @@
   :custom
   (treesit-auto-install t)
   :config
+  (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
+
+(use-package zig-mode
+  :mode ("\\.\\(zig\\|zon\\)\\'" . zig-mode))
 
 (use-package markdown-mode)
 (use-package yaml-mode)
