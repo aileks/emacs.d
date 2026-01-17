@@ -15,7 +15,7 @@
 (setq dired-listing-switches "-alh")
 (setq dired-omit-mode nil)
 
-(defun aileks/dired--gitignored-files ()
+(defun dired--gitignored-files ()
   (let* ((dir (dired-current-directory))
          (root (locate-dominating-file dir ".git")))
     (when root
@@ -34,13 +34,13 @@
                                 rel)))))
                       ignored))))))
 
-(defun aileks/dired-toggle-ignored ()
+(defun dired-toggle-ignored ()
   (interactive)
   (if dired-omit-mode
       (progn
         (setq-local dired-omit-files nil)
         (dired-omit-mode -1))
-    (let ((ignored (aileks/dired--gitignored-files)))
+    (let ((ignored (dired--gitignored-files)))
       (setq-local dired-omit-files
                   (when ignored
                     (concat "\\`" (regexp-opt ignored) "\\'")))

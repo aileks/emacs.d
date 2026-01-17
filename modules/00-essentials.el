@@ -20,6 +20,7 @@
 (recentf-mode 1)
 
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
+(add-hook 'prog-mode-hook #'flymake-mode)
 (add-hook 'text-mode-hook #'display-line-numbers-mode)
 (add-hook 'org-mode-hook #'display-line-numbers-mode)
 
