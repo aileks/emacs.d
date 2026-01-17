@@ -48,5 +48,5 @@ Keybinds here: https://github.com/aileks/emacs.d/wiki
 - [helpful](https://github.com/Wilfred/helpful)
 - [avy](https://github.com/abo-abo/avy)
 - [ibuffer-vc](https://github.com/purcell/ibuffer-vc)
-- [org](https://orgmode.org)s
+- [org](https://orgmode.org)
 - [eat](https://codeberg.org/akib/emacs-eat)
