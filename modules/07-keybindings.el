@@ -9,40 +9,78 @@
 (use-package mood-line
   :config (mood-line-mode))
 
-;; undo-fu: better undo/redo
-(use-package undo-fu
-  :bind (("C-/" . undo-fu-only-undo)
-         ("C-?" . undo-fu-only-redo)))
+;; undo-tree: undo/redo + visualizer
+(use-package undo-tree
+  :init
+  (global-undo-tree-mode)
+  :custom
+  (undo-tree-auto-save-history nil)
+  :bind (("C-/" . undo-tree-undo)
+         ("C-?" . undo-tree-redo)))
 
 ;; yasnippet: code snippets
 (use-package yasnippet
-  :config (yas-global-mode 1))
+  :init
+  (yas-global-mode 1)
+  :bind (:map yas-minor-mode-map
+              ("TAB" . yas-next-field-or-maybe-expand)
+              ("<tab>" . yas-next-field-or-maybe-expand)
+              ("<backtab>" . yas-prev-field)
+              ("S-TAB" . yas-prev-field))
+  :config
+  (yas-reload-all))
 (use-package yasnippet-snippets
   :after yasnippet
-  :config (yasnippet-snippets-initialize))
+  :config
+  (yasnippet-snippets-initialize)
+  (yas-reload-all))
 
 ;; ws-butler: whitespace management
 (use-package ws-butler
   :hook (prog-mode . ws-butler-mode))
 
-;; dape: dubugging client
+;; multiple-cursors: multi-edit
+(use-package multiple-cursors
+  :bind (("C-S-c C-S-c" . mc/edit-lines)
+         ("C->" . mc/mark-next-like-this)
+         ("C-<" . mc/mark-previous-like-this)
+         ("C-c C-<" . mc/mark-all-like-this)))
+
+;; dape: debugging client
 (use-package dape
-  :bind ("C-c d" . dape))
+  :bind (("C-c D" . dape)
+         ("<f5>" . dape-continue)
+         ("<f10>" . dape-next)
+         ("<f11>" . dape-step-in)
+         ("<f12>" . dape-step-out)))
 
 ;; eat: terminal in case I need one
 (use-package eat
   :bind ("C-c t" . eat))
 
 (global-set-key (kbd "C-;") 'comment-line)
+(global-set-key (kbd "C-c /") #'consult-ripgrep)
+(global-set-key (kbd "C-c a j") #'avy-goto-char-timer)
+(global-set-key (kbd "C-c b") #'consult-buffer)
+(global-set-key (kbd "C-c d") #'dired-jump)
+(global-set-key (kbd "C-c f") #'consult-project-extra-find)
+(global-set-key (kbd "C-c h") #'windmove-left)
+(global-set-key (kbd "C-c j") #'windmove-down)
+(global-set-key (kbd "C-c k") #'windmove-up)
+(global-set-key (kbd "C-c l") #'windmove-right)
+(global-set-key (kbd "C-c L") #'elpaca-manager)
+(global-set-key (kbd "C-c n") #'view-echo-area-messages)
+(global-set-key (kbd "C-c o") #'aileks/dired-toggle-ignored)
+(global-set-key (kbd "C-c q") #'quit-window)
+(global-set-key (kbd "C-c r") #'apheleia-format-buffer)
+(global-set-key (kbd "C-c u") #'undo-tree-visualize)
+(global-set-key (kbd "C-c x") #'flymake-show-buffer-diagnostics)
+(global-set-key (kbd "C-c z") #'olivetti-mode)
 (global-set-key (kbd "C-c s l") #'consult-line)
-(global-set-key (kbd "C-c s r") #'consult-ripgrep)
 (global-set-key (kbd "C-c s f") #'consult-find)
 (global-set-key (kbd "C-c s m") #'consult-imenu)
-(global-set-key (kbd "C-c z") #'olivetti-mode)
-(global-set-key (kbd "C-c o") #'aileks/dired-toggle-ignored)
 (global-set-key (kbd "C-c p f") #'consult-project-extra-find)
 (global-set-key (kbd "C-c p r") #'consult-project-extra-ripgrep)
 (global-set-key (kbd "C-c g t") #'magit-todos-list)
 (global-set-key (kbd "C-c g b") #'magit-blame-addition)
 (global-set-key (kbd "C-c g y") #'browse-at-remote)
-(global-set-key (kbd "C-c o") #'aileks/dired-toggle-ignored)
