@@ -5,17 +5,16 @@
 (use-package ibuffer-vc
   :hook (ibuffer . ibuffer-vc-set-filter-groups-by-vc-root))
 (use-package project
-  :ensure nil
-  :bind-keymap ("C-x p" . project-prefix-map))
+  :ensure nil)
 (use-package consult-project-extra
   :after consult)
 
 ;; Dired + extensions
 (require 'dired-x)
-(setq dired-listing-switches "-alh")
+(setq dired-listing-switches "-alh --group-directories-first")
 (setq dired-omit-mode nil)
 
-(defun dired--gitignored-files ()
+(defun my-dired-gitignored-files ()
   (let* ((dir (dired-current-directory))
          (root (locate-dominating-file dir ".git")))
     (when root
@@ -40,11 +39,9 @@
       (progn
         (setq-local dired-omit-files nil)
         (dired-omit-mode -1))
-    (let ((ignored (dired--gitignored-files)))
+    (let ((ignored (my-dired-gitignored-files)))
       (setq-local dired-omit-files
                   (when ignored
                     (concat "\\`" (regexp-opt ignored) "\\'")))
       (dired-omit-mode 1)))
   (dired-revert))
-
-(global-set-key (kbd "C-x C-b") #'ibuffer)

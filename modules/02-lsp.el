@@ -1,24 +1,16 @@
 ;;; -*- lexical-binding: t -*-
 
-(use-package eglot
-  :ensure nil
-  :hook ((c-mode c++-mode c-ts-mode c++-ts-mode zig-mode
-                 python-mode python-ts-mode sh-mode bash-ts-mode
-                 typescript-ts-mode tsx-ts-mode js-ts-mode
-                 css-mode web-mode) . eglot-ensure)
-  :config
-  (setq eglot-connect-timeout 30
-        eglot-autoshutdown nil
-        eglot-ignored-server-capabilities nil)
-  :bind
-  ("C-c e r" . eglot-rename)
-  ("C-c e f" . eglot-format)
-  ("C-c e a" . eglot-code-actions)
-  ("C-c e o" . eglot-code-action-organize-imports)
-  ("C-c e h" . eglot-show-call-hierarchy)
-  ("C-c e t" . eglot-show-type-hierarchy)
-  ("C-c e d" . eldoc-doc-buffer)
-  ("C-c e D" . flymake-show-project-diagnostics))
+ (use-package eglot
+   :ensure nil
+   :hook ((c-mode c++-mode c-ts-mode c++-ts-mode zig-mode
+                  python-mode python-ts-mode sh-mode bash-ts-mode
+                  typescript-ts-mode tsx-ts-mode js-ts-mode
+                  css-mode web-mode) . eglot-ensure)
+   :config
+   (setq eglot-connect-timeout 30
+         eglot-autoshutdown nil
+         eglot-ignored-server-capabilities nil))
+
 
 (use-package eglot-booster
   :after eglot

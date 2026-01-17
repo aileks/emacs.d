@@ -48,21 +48,16 @@
 
 ;; Marginalia: annotations in minibuffer
 (use-package marginalia
-  :bind (:map minibuffer-local-map ("M-A" . marginalia-cycle))
   :init (marginalia-mode))
 
 ;; Consult: search + navigation
-(use-package consult
-  :bind (("M-s r" . consult-ripgrep)
-         ("M-s l" . consult-line)
-         ("C-x b" . consult-buffer)))
+(use-package consult)
 (use-package consult-dir
-  :after consult
-  :bind ("C-x C-d" . consult-dir))
+  :after consult)
+
 
 ;; Embark: contextual actions
 (use-package embark
-  :bind (("C-." . embark-act))
   :custom (prefix-help-command #'embark-prefix-help-command))
 (use-package embark-consult
   :after (embark consult))
@@ -76,16 +71,11 @@
   (add-to-list 'completion-at-point-functions #'cape-yasnippet))
 
 ;; Avy: jump to visible text
-(use-package avy
-  :bind ("M-j" . avy-goto-char-timer))
+(use-package avy)
 
 ;; Helpful: better help buffers
-(use-package helpful
-  :bind (("C-h f" . helpful-callable)
-         ("C-h v" . helpful-variable)
-         ("C-h k" . helpful-key)
-         ("C-h x" . helpful-command)
-         ("C-h F" . helpful-function)))
+(use-package helpful)
+
 
 (use-package savehist
   :ensure nil

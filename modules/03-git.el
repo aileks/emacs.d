@@ -4,8 +4,7 @@
 (use-package transient)
 (use-package magit
   :after transient
-  :commands (magit-status magit-dispatch)
-  :bind (("C-x g" . magit-status)))
+  :commands (magit-status magit-dispatch))
 (use-package diff-hl
   :hook ((prog-mode . diff-hl-mode)
          (dired-mode . diff-hl-dired-mode))

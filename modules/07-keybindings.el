@@ -16,7 +16,8 @@
   :custom
   (undo-tree-auto-save-history nil)
   :bind (("C-/" . undo-tree-undo)
-         ("C-?" . undo-tree-redo)))
+         ("C-?" . undo-tree-redo))
+  :hook (after-init . (lambda () (setq undo-tree-visualizer-diff t))))
 
 ;; yasnippet: code snippets
 (use-package yasnippet
@@ -54,30 +55,46 @@
          ("<f11>" . dape-step-in)
          ("<f12>" . dape-step-out)))
 
-;; eat: terminal in case I need one
-(use-package eat
-  :bind ("C-c t" . eat))
-
+;; GLOBAL KEYBINDS
 (global-set-key (kbd "C-;") 'comment-line)
-(global-set-key (kbd "C-c /") #'consult-project-extra-ripgrep)
-(global-set-key (kbd "C-c a j") #'avy-goto-char-timer)
+(global-set-key (kbd "C-x C-b") #'ibuffer)
+
+;; Leader keys (C-c)
+(global-set-key (kbd "C-c /") #'consult-ripgrep)
+(global-set-key (kbd "C-c b") #'consult-buffer)
 (global-set-key (kbd "C-c d") #'dired-jump)
-(global-set-key (kbd "C-c o") #'dired-toggle-ignored)
+(global-set-key (kbd "C-c f") #'consult-project-extra-find)
 (global-set-key (kbd "C-c h") #'windmove-left)
 (global-set-key (kbd "C-c j") #'windmove-down)
 (global-set-key (kbd "C-c k") #'windmove-up)
 (global-set-key (kbd "C-c l") #'windmove-right)
 (global-set-key (kbd "C-c L") #'elpaca-manager)
 (global-set-key (kbd "C-c n") #'view-echo-area-messages)
+(global-set-key (kbd "C-c o") #'dired-toggle-ignored)
 (global-set-key (kbd "C-c q") #'quit-window)
 (global-set-key (kbd "C-c r") #'apheleia-format-buffer)
+(global-set-key (kbd "C-c t") #'eat)
 (global-set-key (kbd "C-c u") #'undo-tree-visualize)
-(global-set-key (kbd "C-c x") #'flymake-show-buffer-diagnostics)
+(global-set-key (kbd "C-c x") #'flymake-show-diagnostics-buffer)
 (global-set-key (kbd "C-c z") #'olivetti-mode)
-(global-set-key (kbd "C-c b") #'consult-buffer)
+
+;; Search prefix (C-c s)
 (global-set-key (kbd "C-c s l") #'consult-line)
+(global-set-key (kbd "C-c s f") #'consult-find)
 (global-set-key (kbd "C-c s m") #'consult-imenu)
+
+;; Project prefix (C-c p)
 (global-set-key (kbd "C-c p f") #'consult-project-extra-find)
+(global-set-key (kbd "C-c p r") #'consult-project-extra-ripgrep)
+
+;; Git prefix (C-c g)
 (global-set-key (kbd "C-c g t") #'magit-todos-list)
 (global-set-key (kbd "C-c g b") #'magit-blame-addition)
 (global-set-key (kbd "C-c g y") #'browse-at-remote)
+
+;; Additional bindings from other modules (referenced here for completeness)
+;; consult, helpful, embark, avy, marginalia bindings in 01-completion.el
+;; magit, diff-hl, magit-todos, forge bindings in 03-git.el
+;; project, ibuffer-vc, consult-project-extra bindings in 05-project.el
+;; eglot, apheleia bindings in 02-lsp.el
+;; olivetti bindings in 00-essentials.el
