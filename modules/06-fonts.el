@@ -19,3 +19,6 @@
      "<>" "<<" "<<-" "<<=" "<<<" "<~" "<~~" "</" "</>"
      "~@" "~-" "~>" "~~" "~~>" "%%"))
   (global-ligature-mode 't))
+
+(set-face-attribute 'font-lock-comment-face nil :slant 'italic)
+(set-face-attribute 'font-lock-comment-delimiter-face nil :slant 'italic)
