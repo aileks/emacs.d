@@ -2,7 +2,7 @@
 
 (use-package which-key
   :defer 5
-  :custom (which-key-idle-delay 0.6)
+  :custom (which-key-idle-delay 0.3)
   :config (which-key-mode))
 
 ;; mood-line: status bar
@@ -55,11 +55,8 @@
          ("<f11>" . dape-step-in)
          ("<f12>" . dape-step-out)))
 
-;; GLOBAL KEYBINDS
-(global-set-key (kbd "C-;") 'comment-line)
+;; Remaining keybinds
 (global-set-key (kbd "C-x C-b") #'ibuffer)
-
-;; Leader keys (C-c)
 (global-set-key (kbd "C-c /") #'consult-ripgrep)
 (global-set-key (kbd "C-c b") #'consult-buffer)
 (global-set-key (kbd "C-c d") #'dired-jump)
@@ -77,24 +74,11 @@
 (global-set-key (kbd "C-c u") #'undo-tree-visualize)
 (global-set-key (kbd "C-c x") #'flymake-show-diagnostics-buffer)
 (global-set-key (kbd "C-c z") #'olivetti-mode)
-
-;; Search prefix (C-c s)
 (global-set-key (kbd "C-c s l") #'consult-line)
 (global-set-key (kbd "C-c s f") #'consult-find)
 (global-set-key (kbd "C-c s m") #'consult-imenu)
-
-;; Project prefix (C-c p)
 (global-set-key (kbd "C-c p f") #'consult-project-extra-find)
 (global-set-key (kbd "C-c p r") #'consult-project-extra-ripgrep)
-
-;; Git prefix (C-c g)
 (global-set-key (kbd "C-c g t") #'magit-todos-list)
 (global-set-key (kbd "C-c g b") #'magit-blame-addition)
 (global-set-key (kbd "C-c g y") #'browse-at-remote)
-
-;; Additional bindings from other modules (referenced here for completeness)
-;; consult, helpful, embark, avy, marginalia bindings in 01-completion.el
-;; magit, diff-hl, magit-todos, forge bindings in 03-git.el
-;; project, ibuffer-vc, consult-project-extra bindings in 05-project.el
-;; eglot, apheleia bindings in 02-lsp.el
-;; olivetti bindings in 00-essentials.el
