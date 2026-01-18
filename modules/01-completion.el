@@ -13,9 +13,8 @@
   (corfu-cycle t)
   (corfu-preselect 'first)
   (corfu-preview-current nil)
-  (corfu-min-width 30)
-  (corfu-max-width 160)
   (corfu-popupinfo-delay '(0.2 . 0.5))
+  (corfu-popupinfo-direction '(left right vertical))
   :config
   (global-corfu-mode)
   (require 'corfu-popupinfo)
@@ -29,21 +28,6 @@
   (set-face-attribute 'corfu-current nil :height 1.0)
   (set-face-attribute 'corfu-popupinfo nil :height 1.0))
 
-;; Nerd icons: icons in completion + gutter
-(use-package nerd-icons)
-(use-package nerd-icons-completion
-  :after (marginalia nerd-icons)
-  :config
-  (nerd-icons-completion-mode)
-  (nerd-icons-completion-marginalia-setup))
-(use-package kind-icon
-  :after corfu
-  :custom
-  (kind-icon-default-face 'corfu-default)
-  (kind-icon-use-icons t)
-  (kind-icon-default-style '(:padding 0 :stroke 0 :margin 0 :radius 0 :height 0.25 :scale 0.5 :background nil))
-  :config
-  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
 ;; Orderless: fuzzy matching
 (use-package orderless
