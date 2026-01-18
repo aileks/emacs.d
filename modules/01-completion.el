@@ -13,11 +13,18 @@
   (corfu-cycle t)
   (corfu-preselect 'first)
   (corfu-preview-current nil)
+  (corfu-min-width 30)
+  (corfu-max-width 160)
   (corfu-popupinfo-delay '(0.2 . 0.5))
   :config
   (global-corfu-mode)
   (require 'corfu-popupinfo)
   (corfu-popupinfo-mode 1)
+  (define-key corfu-map (kbd "TAB") nil)
+  (define-key corfu-map (kbd "<tab>") nil)
+  (define-key corfu-map (kbd "<backtab>") nil)
+  (define-key corfu-map (kbd "S-TAB") nil)
+  (define-key corfu-map (kbd "<return>") #'corfu-insert)
   (set-face-attribute 'corfu-default nil :height 1.0)
   (set-face-attribute 'corfu-current nil :height 1.0)
   (set-face-attribute 'corfu-popupinfo nil :height 1.0))
@@ -67,8 +74,7 @@
   :init
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
   (add-to-list 'completion-at-point-functions #'cape-file)
-  (add-to-list 'completion-at-point-functions #'cape-keyword)
-  (add-to-list 'completion-at-point-functions #'cape-yasnippet))
+  (add-to-list 'completion-at-point-functions #'cape-keyword))
 
 ;; Avy: jump to visible text
 (use-package avy)
