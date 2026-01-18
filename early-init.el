@@ -7,6 +7,7 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
+(setenv "LC_COLLATE" "C")
 
 ;; Startup speed: boost GC threshold
 (setq gc-cons-threshold most-positive-fixnum
