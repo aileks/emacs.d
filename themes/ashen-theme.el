@@ -26,6 +26,7 @@
    `(fringe ((t (:background ,dark-gray))))
    `(region ((t (:background ,selection-gray))))
    `(highlight ((t (:background ,dark-gray))))
+   `(minibuffer-prompt ((t (:foreground ,blue :weight bold))))
    `(font-lock-builtin-face ((t (:foreground ,orange-smolder))))
    `(font-lock-comment-face ((t (:foreground ,comment-gray))))
    `(font-lock-constant-face ((t (:foreground ,red-ember))))

@@ -108,3 +108,4 @@
 (global-set-key (kbd "<f12>") #'dape-step-out)
 
 (global-set-key (kbd "C-c m") #'marginalia-cycle)
+(global-set-key (kbd "C-c c") #'compile)
