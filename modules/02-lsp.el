@@ -73,7 +73,7 @@
   (setf (alist-get 'black apheleia-mode-alist)
         '(python-mode python-ts-mode))
   (setf (alist-get 'shfmt apheleia-formatters)
-        '("shfmt" "-"))
+        '("shfmt" "-kp" "-c" "-i" "2" "-"))
   (setf (alist-get 'shfmt apheleia-mode-alist)
         '(sh-mode bash-ts-mode))
   (add-hook 'prog-mode-hook #'apheleia-mode))

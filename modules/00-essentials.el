@@ -49,6 +49,22 @@
       css-indent-offset 4
       sgml-basic-offset 4)
 
+(add-hook 'sh-mode-hook
+          (lambda ()
+            (setq tab-width 2
+                  indent-tabs-mode nil
+                  sh-basic-offset 2
+                  sh-indentation 2)))
+
+(add-hook 'bash-ts-mode-hook
+          (lambda ()
+            (setq tab-width 2
+                  indent-tabs-mode nil
+                  sh-basic-offset 2
+                  sh-indentation 2)
+            (when (boundp 'bash-ts-mode-indent-offset)
+              (setq-local bash-ts-mode-indent-offset 2))))
+
 (setq use-dialog-box nil)
 (setq initial-scratch-message nil)
 
