@@ -5,6 +5,12 @@
 (use-package magit
   :after transient
   :commands (magit-status magit-dispatch))
+(use-package magit-todos
+  :after magit
+  :custom (magit-todos-exclude-globs '("node_modules" "dist" "build"))
+  :config (magit-todos-mode 1))
+
+;; diff-hl: better git diff highlighting
 (use-package diff-hl
   :hook ((prog-mode . diff-hl-mode)
          (dired-mode . diff-hl-dired-mode))
@@ -25,11 +31,6 @@
   (add-hook 'magit-pre-refresh-hook #'diff-hl-magit-pre-refresh)
   (add-hook 'magit-post-refresh-hook #'diff-hl-magit-post-refresh))
 
-(use-package magit-todos
-  :after magit
-  :custom (magit-todos-exclude-globs '("node_modules" "dist" "build"))
-  :config (magit-todos-mode 1))
-
 ;; Forge: interaction with sites like GitHub, GitLab, etc.
 (use-package forge
   :after magit
@@ -37,4 +38,3 @@
   (setq forge-owned-accounts nil))
 
 (use-package git-modes)
-(use-package browse-at-remote)

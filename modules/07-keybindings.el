@@ -31,9 +31,6 @@
   (yasnippet-snippets-initialize)
   (yas-reload-all))
 
-;; ws-butler: whitespace management
-(use-package ws-butler
-  :hook (prog-mode . ws-butler-mode))
 
 ;; multiple-cursors: multi-edit
 (use-package multiple-cursors
