@@ -4,7 +4,12 @@
 (use-package transient)
 (use-package magit
   :after transient
-  :commands (magit-status magit-dispatch))
+  :commands (magit-status magit-dispatch)
+  :config
+  (add-to-list 'display-buffer-alist
+               `(,(rx bos "*magit" (one-or-more anything) "*")
+                 (display-buffer-below-selected)
+                 (window-height . 0.4))))
 (use-package magit-todos
   :after magit
   :custom (magit-todos-exclude-globs '("node_modules" "dist" "build"))
