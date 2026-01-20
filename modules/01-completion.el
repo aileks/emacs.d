@@ -3,7 +3,10 @@
 ;; Vertico: vertical minibuffer completion
 (use-package vertico
   :demand t
-  :config (vertico-mode 1))
+  :custom
+  (vertico-cycle t)
+  :config
+  (vertico-mode 1))
 
 ;; Corfu: in-buffer completion popup
 (use-package corfu
@@ -28,14 +31,21 @@
   (set-face-attribute 'corfu-current nil :height 1.0)
   (set-face-attribute 'corfu-popupinfo nil :height 1.0))
 
-
-;; Orderless: fuzzy matching
+;; Orderless: general matching everywhere
 (use-package orderless
   :custom
   (completion-styles '(orderless basic))
-  (completion-category-overrides '((file (styles partial-completion))))
-  (completion-category-defaults nil)
-  (completion-pcm-leading-wildcard t))
+  (completion-category-defaults nil))
+(setq orderless-matching-styles
+      '(orderless-literal orderless-regexp orderless-flex))
+
+;; Hotfuzz: scored fuzzy for files/buffers
+(use-package hotfuzz
+  :after vertico
+  :config
+  (setq completion-category-overrides
+        '((file   (styles hotfuzz orderless partial-completion))
+          (buffer (styles hotfuzz orderless)))))
 
 ;; Marginalia: annotations in minibuffer
 (use-package marginalia
@@ -65,7 +75,6 @@
 
 ;; Helpful: better help buffers
 (use-package helpful)
-
 
 (use-package savehist
   :ensure nil
