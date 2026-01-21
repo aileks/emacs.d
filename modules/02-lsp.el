@@ -1,11 +1,11 @@
 ;;; -*- lexical-binding: t -*-
 
- (use-package eglot
-   :ensure nil
-   :hook ((c-mode c++-mode c-ts-mode c++-ts-mode zig-mode
-                  python-mode python-ts-mode sh-mode bash-ts-mode
-                  typescript-ts-mode tsx-ts-mode js-ts-mode
-                  css-mode web-mode) . eglot-ensure)
+  (use-package eglot
+    :ensure nil
+    :hook ((c-mode c++-mode zig-mode
+                   python-mode sh-mode
+                   typescript-mode tsx-mode js-mode
+                   css-mode web-mode) . eglot-ensure)
    :config
    (setq eglot-connect-timeout 30
          eglot-autoshutdown nil
@@ -33,52 +33,45 @@
 (use-package toml-mode)
 
 (with-eval-after-load 'eglot
-  (setq eglot-server-programs
-        (append eglot-server-programs
-                '((c-mode . ("clangd"))
-                  (c-ts-mode . ("clangd"))
-                  (python-mode . ("pyright-langserver" "--stdio"))
-                  (python-ts-mode . ("pyright-langserver" "--stdio"))
-                  (zig-mode . ("zls"))
-                  (bash-ts-mode . ("bash-language-server" "start"))
-                  (sh-mode . ("bash-language-server" "start"))
-                  (typescript-ts-mode . ("typescript-language-server" "--stdio"))
-                  (tsx-ts-mode . ("typescript-language-server" "--stdio"))
-                  (js-ts-mode . ("typescript-language-server" "--stdio"))
-                  (web-mode . ("vscode-html-language-server" "--stdio"))
-                  (css-mode . ("vscode-css-language-server" "--stdio"))))))
+   (setq eglot-server-programs
+         (append eglot-server-programs
+                 '((c-mode . ("clangd"))
+                   (c++-mode . ("clangd"))
+                   (python-mode . ("pyright-langserver" "--stdio"))
+                   (zig-mode . ("zls"))
+                   (sh-mode . ("bash-language-server" "start"))
+                   (typescript-mode . ("typescript-language-server" "--stdio"))
+                   (tsx-mode . ("typescript-language-server" "--stdio"))
+                   (js-mode . ("typescript-language-server" "--stdio"))
+                   (web-mode . ("vscode-html-language-server" "--stdio"))
+                   (css-mode . ("vscode-css-language-server" "--stdio"))))))
 
 (setq major-mode-remap-alist
-      '((c-mode . c-ts-mode)
-        (c++-mode . c++-ts-mode)
-        (python-mode . python-ts-mode)
-        (js-mode . js-ts-mode)
-        (typescript-mode . typescript-ts-mode)
-        (sh-mode . bash-ts-mode)))
+       '())
 
 (use-package apheleia
   :config
   (setf (alist-get 'prettier apheleia-formatters)
         '("prettier" "--stdin-filepath" filepath))
   (setf (alist-get 'prettier apheleia-mode-alist)
-        '(js-mode js-ts-mode jsx-mode tsx-ts-mode typescript-mode typescript-ts-mode))
+         '(js-mode jsx-mode tsx-mode typescript-mode))
   (setf (alist-get 'clang-format apheleia-formatters)
         '("clang-format" "--assume-filename" filepath))
   (setf (alist-get 'clang-format apheleia-mode-alist)
-        '(c-mode c-ts-mode))
-  (setf (alist-get 'black apheleia-formatters)
-        '("black" "-"))
-  (setf (alist-get 'black apheleia-mode-alist)
-        '(python-mode python-ts-mode))
-  (setf (alist-get 'shfmt apheleia-formatters)
-        '("shfmt" "-kp" "-c" "-i" "2" "-"))
-  (setf (alist-get 'shfmt apheleia-mode-alist)
-        '(sh-mode bash-ts-mode))
+         '(c-mode c++-mode))
+   (setf (alist-get 'black apheleia-formatters)
+         '("black" "-"))
+   (setf (alist-get 'black apheleia-mode-alist)
+         '(python-mode))
+   (setf (alist-get 'shfmt apheleia-formatters)
+         '("shfmt" "-kp" "-c" "-i" "2" "-"))
+   (setf (alist-get 'shfmt apheleia-mode-alist)
+         '(sh-mode))
   (add-hook 'prog-mode-hook #'apheleia-mode))
 
 (use-package flymake-shellcheck
-  :hook ((sh-mode bash-ts-mode) . flymake-shellcheck-load)
-  :custom (flymake-shellcheck-checker 'sh-shellcheck))
+   :hook (sh-mode . flymake-shellcheck-load)
+   :custom (flymake-shellcheck-checker 'sh-shellcheck))
 
 (use-package flymake
   :ensure nil
