@@ -18,6 +18,7 @@
 (delete-selection-mode 1)
 (column-number-mode 1)
 (recentf-mode 1)
+(global-auto-revert-mode 1)
 
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 (add-hook 'text-mode-hook #'display-line-numbers-mode)
@@ -67,9 +68,7 @@
 
 (setq use-dialog-box nil)
 (setq initial-scratch-message nil)
-
 (setq-default line-spacing 0.2)
-
 (blink-cursor-mode 0)
 (save-place-mode 1)
 
@@ -90,6 +89,17 @@
   (add-hook 'elpaca-after-init-hook #'aileks/dashboard-open)
   (add-hook 'server-after-make-frame-hook #'aileks/dashboard-open))
 
-;; whitespace management
+(use-package hl-todo
+  :init
+  (setq hl-todo-keyword-faces
+        '(("TODO"  . "#89492a")
+          ("FIXME" . "#c53030")
+          ("NOTE"  . "#a7a7a7")
+          ("HACK"  . "#4a8b8b")
+          ("WARN"  . "#e5a72a")))
+  :config
+  (global-hl-todo-mode 1))
+
 (use-package ws-butler
   :hook (prog-mode . ws-butler-mode))
+
