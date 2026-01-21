@@ -1,12 +1,12 @@
 ;;; -*- lexical-binding: t -*-
 
+(setq-default display-line-numbers-type 'relative)
 (setq make-backup-files nil
       auto-save-default nil
       create-lockfiles nil
       ring-bell-function 'ignore
       visible-bell nil
       require-final-newline t)
-
 (setq confirm-kill-emacs 'y-or-n-p)
 
 (set-language-environment "UTF-8")
@@ -92,7 +92,7 @@
 (use-package hl-todo
   :init
   (setq hl-todo-keyword-faces
-        '(("TODO"  . "#89492a")
+        '(("TODO"  . "#c4693d")
           ("FIXME" . "#c53030")
           ("NOTE"  . "#a7a7a7")
           ("HACK"  . "#4a8b8b")

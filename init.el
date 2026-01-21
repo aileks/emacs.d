@@ -63,6 +63,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("67ff5f14c4e803825ac0f59732df882e56bf7610efd5328c2df359d5b5942c0b"
+     "33f7727677d9891a1f9b1520de22fd0f5f25d918cd5a056f226b8fb5ace0da3d" default))
  '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
