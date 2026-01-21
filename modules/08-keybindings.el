@@ -71,6 +71,7 @@
 (global-set-key (kbd "C-c e h") #'eglot-show-call-hierarchy)
 (global-set-key (kbd "C-c e t") #'eglot-show-type-hierarchy)
 (global-set-key (kbd "C-c e d") #'eldoc-doc-buffer)
+(global-set-key (kbd "C-c e f") #'eglot-format-buffer)
 (global-set-key (kbd "C-c e D") #'flymake-show-project-diagnostics)
 
 (global-set-key (kbd "C-c D") #'dape)

@@ -36,9 +36,7 @@
   (setq eglot-server-programs
         (append eglot-server-programs
                 '((c-mode . ("clangd"))
-                  (c++-mode . ("clangd"))
                   (c-ts-mode . ("clangd"))
-                  (c++-ts-mode . ("clangd"))
                   (python-mode . ("pyright-langserver" "--stdio"))
                   (python-ts-mode . ("pyright-langserver" "--stdio"))
                   (zig-mode . ("zls"))
@@ -65,9 +63,9 @@
   (setf (alist-get 'prettier apheleia-mode-alist)
         '(js-mode js-ts-mode jsx-mode tsx-ts-mode typescript-mode typescript-ts-mode))
   (setf (alist-get 'clang-format apheleia-formatters)
-        '("clang-format"))
+        '("clang-format" "--assume-filename" filepath))
   (setf (alist-get 'clang-format apheleia-mode-alist)
-        '(c-mode c-ts-mode c++-mode c++-ts-mode))
+        '(c-mode c-ts-mode))
   (setf (alist-get 'black apheleia-formatters)
         '("black" "-"))
   (setf (alist-get 'black apheleia-mode-alist)

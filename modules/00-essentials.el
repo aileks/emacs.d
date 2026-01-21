@@ -90,6 +90,6 @@
   (add-hook 'elpaca-after-init-hook #'aileks/dashboard-open)
   (add-hook 'server-after-make-frame-hook #'aileks/dashboard-open))
 
-;; ws-butler: whitespace management
+;; whitespace management
 (use-package ws-butler
   :hook (prog-mode . ws-butler-mode))

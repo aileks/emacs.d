@@ -52,7 +52,11 @@
    `(success ((t (:foreground ,red-glowing :weight bold))))
    `(isearch ((t (:foreground ,orange-blaze :background ,dark-gray :inverse-video t))))
    `(lazy-highlight ((t (:foreground ,orange-smolder :background ,dark-gray :inverse-video t))))
-   `(link ((t (:foreground ,orange-glow :underline t))))
-   `(link-visited ((t (:foreground ,red-ember :underline t))))))
+    `(link ((t (:foreground ,orange-glow :underline t))))
+    `(link-visited ((t (:foreground ,red-ember :underline t))))
+    `(eglot-inlay-hint-face ((t (:foreground ,comment-gray :height 0.8))))
+    `(eglot-type-hint-face ((t (:inherit eglot-inlay-hint-face))))
+    `(eglot-parameter-hint-face ((t (:inherit eglot-inlay-hint-face))))))
+
 
 (provide-theme 'ashen)
