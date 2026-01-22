@@ -32,6 +32,8 @@
 
 (use-package zig-ts-mode
   :ensure (:type git :host codeberg :repo "meow_king/zig-ts-mode"))
+(setq treesit-language-source-alist
+      '((zig "https://github.com/tree-sitter-grammars/tree-sitter-zig")))
 
 (use-package markdown-mode)
 (use-package yaml-mode)
