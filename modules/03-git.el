@@ -4,16 +4,9 @@
 (use-package transient)
 (use-package magit
   :after transient
-  :commands (magit-status magit-dispatch)
-  :config
-  (add-to-list 'display-buffer-alist
-               `(,(rx bos "*magit" (one-or-more anything) "*")
-                 (display-buffer-below-selected)
-                 (window-height . 0.4))))
-(use-package magit-todos
-  :after magit
-  :custom (magit-todos-exclude-globs '("node_modules" "dist" "build"))
-  :config (magit-todos-mode 1))
+  :commands (magit-status magit-dispatch magit-push)
+  :custom
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
 ;; diff-hl: better git diff highlighting
 (use-package diff-hl
