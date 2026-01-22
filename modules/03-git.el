@@ -4,9 +4,7 @@
 (use-package transient)
 (use-package magit
   :after transient
-  :commands (magit-status magit-dispatch magit-push)
-  :custom
-  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+  :commands (magit-status magit-dispatch magit-push))
 
 ;; diff-hl: better git diff highlighting
 (use-package diff-hl
