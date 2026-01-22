@@ -76,7 +76,6 @@
 
 (global-set-key (kbd "C-c D") #'dape)
 (global-set-key (kbd "C-c z") #'olivetti-mode)
-(global-set-key (kbd "C-c t") #'eat)
 (global-set-key (kbd "C-;") #'comment-line)
 (global-set-key (kbd "C-.") #'embark-act)
 (global-set-key (kbd "M-j") #'avy-goto-char-timer)

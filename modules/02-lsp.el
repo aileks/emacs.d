@@ -56,10 +56,6 @@
         '(sh-mode bash-ts-mode))
   (add-hook 'prog-mode-hook #'apheleia-mode))
 
-(use-package flymake-shellcheck
-  :hook (sh-mode . flymake-shellcheck-load)
-  :custom (flymake-shellcheck-checker 'sh-shellcheck))
-
 (use-package flymake
   :ensure nil
   :custom
@@ -69,6 +65,9 @@
    '((error "" compilation-error)
      (warning "" compilation-warning)
      (note "" compilation-info))))
+(use-package flymake-shellcheck
+  :hook (sh-mode . flymake-shellcheck-load)
+  :custom (flymake-shellcheck-checker 'sh-shellcheck))
 
 (with-eval-after-load 'eglot
   (dolist (entry
