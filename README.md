@@ -25,3 +25,4 @@ Keybinds here: https://codeberg.org/aileks/emacs.d/wiki
 - [olivetti](https://github.com/rnkn/olivetti)
 - [helpful](https://github.com/Wilfred/helpful)
 - [avy](https://github.com/abo-abo/avy)
+- [move-text](https://github.com/emacsfodder/move-text)

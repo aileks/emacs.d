@@ -106,3 +106,6 @@
 
 (global-set-key (kbd "C-c m") #'marginalia-cycle)
 (global-set-key (kbd "C-c c") #'compile)
+
+(global-set-key (kbd "M-p") 'move-text-up)
+(global-set-key (kbd "M-n") 'move-text-down)
