@@ -64,8 +64,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("67ff5f14c4e803825ac0f59732df882e56bf7610efd5328c2df359d5b5942c0b"
+   '("dc30d260b8880bee7ec11c9d2b69ac8fb1f7f5e63dddf262f399e87b31349823"
+     "5542e5a1c0fbc0f23631b47366c6de6f6baa9ca45abf09c5f8149223f0154b2c"
+     "3530e61adf707798249f7cf7858968e515214e20b7a360094f01ab3239ea7d9a"
+     "67ff5f14c4e803825ac0f59732df882e56bf7610efd5328c2df359d5b5942c0b"
      "33f7727677d9891a1f9b1520de22fd0f5f25d918cd5a056f226b8fb5ace0da3d" default))
+ '(markdown-fontify-code-blocks-natively nil)
  '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

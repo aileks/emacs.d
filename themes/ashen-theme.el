@@ -30,7 +30,7 @@
   (custom-theme-set-faces
    'ashen
    `(default ((t :background ,background :foreground ,foreground)))
-   `(cursor ((t :background ,blue)))
+   `(cursor ((t :background ,g-5)))
    `(fringe ((t :background ,g-9)))
    `(region ((t :background ,g-8)))
    `(highlight ((t :background ,g-11)))

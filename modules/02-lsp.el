@@ -30,11 +30,7 @@
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
 
-(use-package zig-ts-mode
-  :ensure (:type git :host codeberg :repo "meow_king/zig-ts-mode"))
-(setq treesit-language-source-alist
-      '((zig "https://github.com/tree-sitter-grammars/tree-sitter-zig")))
-
+(use-package zig-mode)
 (use-package markdown-mode)
 (use-package yaml-mode)
 (use-package json-mode)
@@ -84,10 +80,8 @@
               . ("typescript-language-server" "--stdio"))
 
              ((web-mode html-ts-mode) . ("vscode-html-language-server" "--stdio"))
-             ((css-mode css-ts-mode)  . ("vscode-css-language-server" "--stdio"))
-
-             ((zig-ts-mode :language-id "zig") . ("zls"))))
-    (add-to-list 'eglot-server-programs entry)))
+             ((css-mode css-ts-mode)  . ("vscode-css-language-server" "--stdio"))))
+        (add-to-list 'eglot-server-programs entry)))
 
 (setopt major-mode-remap-alist
         '((c-mode          . c-ts-mode)
