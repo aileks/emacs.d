@@ -30,13 +30,8 @@
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
 
-;; My fork of zig-ts-mode
 (use-package zig-ts-mode
-  :ensure '(:type git :host codeberg
-                  :repo "https://codeberg.org/aileks/zig-ts-mode.git"
-                  :branch "aileks/fix-tree-sitter-query-error")
-  :demand t)
-
+  :ensure (:type git :host codeberg :repo "meow_king/zig-ts-mode"))
 
 (use-package markdown-mode)
 (use-package yaml-mode)
