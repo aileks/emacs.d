@@ -1,6 +1,6 @@
 # Emacs
 
-Keybinds here: https://codeberg.org/aileks/emacs.d/wiki
+List of keybinds [here](https://codeberg.org/aileks/emacs.d/wiki)
 
 - [elpaca](https://github.com/progfolio/elpaca)
 - [vertico](https://github.com/minad/vertico)
