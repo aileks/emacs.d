@@ -3,7 +3,7 @@
 (setq default-frame-alist '((undecorated . t)))
 (set-frame-parameter (selected-frame) 'alpha '(99 . 99))
 (add-to-list 'default-frame-alist '(alpha . (99 . 99)))
-(add-to-list 'default-frame-alist '(font . "CommitMono Nerd Font Mono-12"))
+(add-to-list 'default-frame-alist '(font . "CommitMono Nerd Font Mono-16"))
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
