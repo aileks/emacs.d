@@ -1,5 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 
+(setq default-frame-alist '((undecorated . t)))
 (set-frame-parameter (selected-frame) 'alpha '(95 . 95))
 (add-to-list 'default-frame-alist '(alpha . (95 . 95)))
 (add-to-list 'default-frame-alist '(font . "CommitMono Nerd Font Mono-12"))
