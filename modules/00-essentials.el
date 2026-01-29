@@ -1,5 +1,13 @@
 ;;; -*- lexical-binding: t -*-
 
+;; Have to force this or windows open to the side
+(setq display-buffer-base-action
+      '((display-buffer-reuse-window
+         display-buffer-below-selected)
+        (window-height . 0.4)))
+(setq split-height-threshold 80
+      split-width-threshold 160)
+
 (setq-default display-line-numbers-type 'relative)
 (setq make-backup-files nil
       auto-save-default nil

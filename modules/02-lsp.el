@@ -33,7 +33,10 @@
 (use-package zig-ts-mode
   :ensure (:type git :host codeberg :repo "meow_king/zig-ts-mode"))
 
-(use-package markdown-mode)
+(use-package markdown-mode
+  :mode (("README\\.md\\'" . gfm-view-mode)
+         ("\\.md\\'" . markdown-mode)))
+
 (use-package yaml-mode)
 (use-package json-mode)
 (use-package toml-mode)
