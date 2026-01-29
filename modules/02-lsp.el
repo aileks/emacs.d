@@ -32,6 +32,9 @@
 
 (use-package zig-ts-mode
   :ensure (:type git :host codeberg :repo "meow_king/zig-ts-mode"))
+(with-eval-after-load 'zig-ts-mode
+  (define-key zig-ts-mode-map (kbd "M-[") #'beginning-of-defun)
+  (define-key zig-ts-mode-map (kbd "M-]") #'end-of-defun))
 
 (use-package markdown-mode
   :mode (("README\\.md\\'" . gfm-view-mode)
