@@ -5,11 +5,9 @@
   :custom (which-key-idle-delay 0.3)
   :config (which-key-mode))
 
-;; mood-line: status bar
 (use-package mood-line
   :config (mood-line-mode))
 
-;; undo-tree: undo/redo + visualizer
 (use-package undo-tree
   :init
   (global-undo-tree-mode)
@@ -19,7 +17,6 @@
          ("C-?" . undo-tree-redo))
   :hook (after-init . (lambda () (setq undo-tree-visualizer-diff t))))
 
-;; yasnippet: code snippets
 (use-package yasnippet
   :init
   (yas-global-mode 1)
@@ -31,15 +28,12 @@
   (yasnippet-snippets-initialize)
   (yas-reload-all))
 
-
-;; multiple-cursors: multi-edit
 (use-package multiple-cursors
   :bind (("C-S-c C-S-c" . mc/edit-lines)
          ("C->" . mc/mark-next-like-this)
          ("C-<" . mc/mark-previous-like-this)
          ("C-c C-<" . mc/mark-all-like-this)))
 
-;; dape: debugging client
 (use-package dape
   :bind (("C-c D" . dape)
          ("<f5>" . dape-continue)
@@ -47,7 +41,7 @@
          ("<f11>" . dape-step-in)
          ("<f12>" . dape-step-out)))
 
-;; Remaining keybinds
+;; Misc keybinds
 (global-set-key (kbd "C-x b") #'consult-buffer)
 (global-set-key (kbd "C-x g") #'magit-status)
 (global-set-key (kbd "C-x C-b") #'ibuffer)

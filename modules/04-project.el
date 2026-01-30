@@ -8,19 +8,16 @@
   :ensure nil)
 (use-package consult-project-extra
    :after consult)
- 
- ;; Auto-register projects on file open
- (defun auto-register-project ()
-   "Auto-register current buffer's project if not already known."
-   (when-let ((proj (project-current nil))
-                 (root (project-root proj)))
-     (unless (member root (project-known-project-roots))
-       (project-remember-project proj)
-       (message "Registered project: %s" root))))
 
- (add-hook 'after-change-major-mode-hook #'auto-register-project)
- 
- ;; Dired + extensions
+(defun auto-register-project ()
+ (when-let ((proj (project-current nil))
+               (root (project-root proj)))
+   (unless (member root (project-known-project-roots))
+     (project-remember-project proj)
+     (message "Registered project: %s" root))))
+
+(add-hook 'after-change-major-mode-hook #'auto-register-project)
+
 (require 'dired-x)
 (setq dired-listing-switches "-alh --group-directories-first")
 (setq dired-omit-mode nil)

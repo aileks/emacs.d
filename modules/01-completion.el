@@ -1,6 +1,5 @@
 ;;; -*- lexical-binding: t -*-
 
-;; Vertico: vertical minibuffer completion
 (use-package vertico
   :demand t
   :custom
@@ -8,7 +7,6 @@
   :config
   (vertico-mode 1))
 
-;; Corfu: in-buffer completion popup
 (use-package corfu
   :demand t
   :custom
@@ -31,7 +29,6 @@
   (set-face-attribute 'corfu-current nil :height 1.0)
   (set-face-attribute 'corfu-popupinfo nil :height 1.0))
 
-;; Orderless: general matching everywhere
 (use-package orderless
   :custom
   (completion-styles '(orderless basic))
@@ -39,7 +36,6 @@
 (setq orderless-matching-styles
       '(orderless-literal orderless-regexp orderless-flex))
 
-;; Hotfuzz: scored fuzzy for files/buffers
 (use-package hotfuzz
   :after vertico
   :config
@@ -47,33 +43,25 @@
         '((file   (styles hotfuzz orderless partial-completion))
           (buffer (styles hotfuzz orderless)))))
 
-;; Marginalia: annotations in minibuffer
 (use-package marginalia
   :init (marginalia-mode))
 
-;; Consult: search + navigation
 (use-package consult)
 (use-package consult-dir
   :after consult)
 
-
-;; Embark: contextual actions
 (use-package embark
   :custom (prefix-help-command #'embark-prefix-help-command))
 (use-package embark-consult
   :after (embark consult))
 
-;; Cape: completion at point extensions
 (use-package cape
   :init
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
   (add-to-list 'completion-at-point-functions #'cape-file)
   (add-to-list 'completion-at-point-functions #'cape-keyword))
 
-;; Avy: jump to visible text
 (use-package avy)
-
-;; Helpful: better help buffers
 (use-package helpful)
 
 (use-package savehist

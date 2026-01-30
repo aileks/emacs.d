@@ -1,12 +1,10 @@
 ;;; -*- lexical-binding: t -*-
 
-;; Magit: minimal git client
 (use-package transient)
 (use-package magit
   :after transient
   :commands (magit-status magit-dispatch magit-push))
 
-;; diff-hl: better git diff highlighting
 (use-package diff-hl
   :hook ((prog-mode . diff-hl-mode)
          (dired-mode . diff-hl-dired-mode))
@@ -27,7 +25,6 @@
   (add-hook 'magit-pre-refresh-hook #'diff-hl-magit-pre-refresh)
   (add-hook 'magit-post-refresh-hook #'diff-hl-magit-post-refresh))
 
-;; Forge: interaction with sites like GitHub, GitLab, etc.
 (use-package forge
   :after magit
   :init
