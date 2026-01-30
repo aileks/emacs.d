@@ -44,6 +44,17 @@
 (use-package json-mode)
 (use-package toml-mode)
 
+;; lean4 mode specific setup
+(use-package dash :ensure t)
+(use-package lsp-mode :ensure t)
+(use-package magit-section :ensure t)
+(use-package lean4-mode
+  :commands (lean4-mode)
+  :ensure (lean4-mode :host github
+                      :repo "leanprover-community/lean4-mode"
+                      :files ("*.el" "data"))
+  :hook (lean4-mode . lsp-deferred))
+
 (use-package apheleia
   :config
   (setf (alist-get 'prettier apheleia-formatters)
