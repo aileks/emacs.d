@@ -1,14 +1,15 @@
 ;;; -*- lexical-binding: t; -*-
 
-(setq-default project-mode-line t)
+(use-package project
+  :ensure nil
+  :custom
+  (project-mode-line t))
 
 (use-package ibuffer-vc
   :hook (ibuffer-hook . ibuffer-vc-set-filter-groups-by-vc-root))
 
-(use-package project)
-
 (use-package consult-project-extra
-  :after consult
+  :after (consult project)
   :custom (consult-project-function #'consult-project-extra-project-fn)
   :bind (("C-c p f" . consult-project-extra-find)
          ("C-c p o" . consult-project-extra-find-other-window)))
