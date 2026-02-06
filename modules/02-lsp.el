@@ -16,7 +16,8 @@
   :config
   (setq eglot-connect-timeout 30
         eglot-autoshutdown nil
-        eglot-ignored-server-capabilities nil))
+        eglot-ignored-server-capabilities nil
+        eglot-code-action-indications '(eldoc-hint)))
 
 (use-package eglot-booster
   :after eglot
