@@ -5,6 +5,14 @@
   :after transient
   :commands (magit-status magit-dispatch magit-push))
 
+(use-package magit-todos
+  :after magit
+  :commands (magit-todos-list))
+
+(use-package browse-at-remote
+  :after magit
+  :commands (browse-at-remote))
+
 (use-package diff-hl
   :hook ((prog-mode . diff-hl-mode)
          (dired-mode . diff-hl-dired-mode))

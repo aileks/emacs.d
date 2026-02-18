@@ -48,16 +48,25 @@
 ;; Load my custom theme
 (add-to-list 'custom-theme-load-path
              (expand-file-name "themes" user-emacs-directory))
-(add-hook 'elpaca-after-init-hook
-          (lambda ()
-            (load-theme 'ashen t)))
+(condition-case err
+    (load-theme 'ashen t)
+  (error
+   (display-warning 'init
+                    (format "Failed to load theme `ashen': %s"
+                            (error-message-string err))
+                    :warning)))
 
 (add-hook 'elpaca-after-init-hook #'elpaca-update-all)
 
 ;; Load modules
 (let ((module-dir (expand-file-name "modules" user-emacs-directory)))
-  (dolist (file (directory-files module-dir t "^[0-9].*\\.el$"))
-    (load file)))
+  (let* ((modules (sort (directory-files module-dir t "^[0-9].*\\.el$") #'string<))
+         (keybindings (expand-file-name "08-keybindings.el" module-dir)))
+    (dolist (file modules)
+      (unless (string= file keybindings)
+        (load file)))
+    (when (file-exists-p keybindings)
+      (load keybindings))))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

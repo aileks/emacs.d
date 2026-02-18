@@ -50,29 +50,8 @@
               tab-width 4
               fill-column 100)
 
-(setq js-indent-level 2
-      js2-indent-level 2
-      typescript-indent-level 2
-      python-indent-offset 4
-      c-basic-offset 4
-      css-indent-offset 4
-      sgml-basic-offset 4)
-
-(add-hook 'sh-mode-hook
-          (lambda ()
-            (setq tab-width 2
-                  indent-tabs-mode nil
-                  sh-basic-offset 2
-                  sh-indentation 2)))
-
-(add-hook 'bash-ts-mode-hook
-          (lambda ()
-            (setq tab-width 2
-                  indent-tabs-mode nil
-                  sh-basic-offset 2
-                  sh-indentation 2)
-            (when (boundp 'bash-ts-mode-indent-offset)
-              (setq-local bash-ts-mode-indent-offset 2))))
+(setq python-indent-offset 4
+      c-basic-offset 4)
 
 (setq use-dialog-box nil)
 (setq initial-scratch-message nil)
@@ -90,12 +69,12 @@
         dashboard-items '((recents  . 5)
                           (projects . 5)))
   (dashboard-setup-startup-hook)
-  (defun aileks/dashboard-open (&optional frame)
+  (defun cfg/dashboard-open (&optional frame)
     (when (frame-live-p frame)
       (select-frame frame))
     (dashboard-open))
-  (add-hook 'elpaca-after-init-hook #'aileks/dashboard-open)
-  (add-hook 'server-after-make-frame-hook #'aileks/dashboard-open))
+  (add-hook 'elpaca-after-init-hook #'cfg/dashboard-open)
+  (add-hook 'server-after-make-frame-hook #'cfg/dashboard-open))
 
 (use-package hl-todo
   :init
