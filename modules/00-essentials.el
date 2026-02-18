@@ -64,8 +64,15 @@
   :init
   (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
   :config
+  (defun cfg/dashboard-project-find-file (project-root)
+    "Switch to PROJECT-ROOT and open `project-find-file'."
+    (let ((default-directory project-root))
+      (require 'project)
+      (project-find-file)))
+
   (setq dashboard-startup-banner 'logo
         dashboard-center-content t
+        dashboard-projects-switch-function #'cfg/dashboard-project-find-file
         dashboard-items '((recents  . 5)
                           (projects . 5)))
   (dashboard-setup-startup-hook)

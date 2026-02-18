@@ -3,7 +3,7 @@
 (use-package eglot
   :ensure nil
   :hook ((python-mode python-ts-mode python-base-mode
-          julia-mode julia-ts-mode
+          julia-mode
           ess-r-mode
           c++-mode c++-ts-mode)
          . eglot-ensure)
@@ -22,6 +22,8 @@
   :custom
   (treesit-auto-install t)
   :config
+  ;; Keep Julia on `julia-mode` until julia-ts-mode/grammar ABI settles.
+  (setq treesit-auto-langs (remove 'julia treesit-auto-langs))
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
 
@@ -38,10 +40,9 @@
          ("\\.Rprofile\\'" . ess-r-mode)))
 
 (use-package julia-mode
+  :init
+  (add-to-list 'auto-mode-alist '("\\.jl\\'" . julia-mode))
   :mode "\\.jl\\'")
-
-(use-package julia-ts-mode
-  :defer t)
 
 (use-package eglot-jl
   :after eglot
@@ -82,7 +83,7 @@
               . ("R" "--no-echo" "-e" "languageserver::run()"))))
     (add-to-list 'eglot-server-programs entry)))
 
-(setq major-mode-remap-alist
-      '((c++-mode        . c++-ts-mode)
-        (python-mode     . python-ts-mode)
-        (julia-mode      . julia-ts-mode)))
+(dolist (entry
+         '((c++-mode    . c++-ts-mode)
+           (python-mode . python-ts-mode)))
+  (add-to-list 'major-mode-remap-alist entry))

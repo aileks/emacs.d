@@ -49,7 +49,6 @@
   :defer t
   :hook ((python-base-mode . code-cells-mode-maybe)
          (julia-mode . code-cells-mode-maybe)
-         (julia-ts-mode . code-cells-mode-maybe)
          (ess-r-mode . code-cells-mode-maybe))
   :config
   ;; Keep .ipynb as text-first buffers with language-appropriate highlighting.
