@@ -3,14 +3,18 @@
 (use-package transient)
 (use-package magit
   :after transient
+  :bind (("C-x g" . magit-status)
+         ("C-c g b" . magit-blame-addition))
   :commands (magit-status magit-dispatch magit-push))
 
 (use-package magit-todos
   :after magit
+  :bind (("C-c g t" . magit-todos-list))
   :commands (magit-todos-list))
 
 (use-package browse-at-remote
   :after magit
+  :bind (("C-c g y" . browse-at-remote))
   :commands (browse-at-remote))
 
 (use-package diff-hl

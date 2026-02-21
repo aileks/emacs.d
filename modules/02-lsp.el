@@ -2,6 +2,18 @@
 
 (use-package eglot
   :ensure nil
+  :commands (eglot-rename
+             eglot-code-actions
+             eglot-code-action-organize-imports
+             eglot-show-call-hierarchy
+             eglot-show-type-hierarchy
+             eglot-format-buffer)
+  :bind (("C-c e r" . eglot-rename)
+         ("C-c e a" . eglot-code-actions)
+         ("C-c e o" . eglot-code-action-organize-imports)
+         ("C-c e h" . eglot-show-call-hierarchy)
+         ("C-c e t" . eglot-show-type-hierarchy)
+         ("C-c e f" . eglot-format-buffer))
   :hook ((python-mode python-ts-mode python-base-mode
           julia-mode
           ess-r-mode
@@ -54,6 +66,7 @@
          ("\\.Rmd\\'" . poly-quarto-mode)))
 
 (use-package apheleia
+  :bind (("C-c r" . apheleia-format-buffer))
   :config
   (setf (alist-get 'clang-format apheleia-formatters)
         '("clang-format" "--assume-filename" filepath))
@@ -78,7 +91,7 @@
 (with-eval-after-load 'eglot
   (dolist (entry
            '(((c++-mode c++-ts-mode) . ("clangd"))
-              ((python-mode python-ts-mode python-base-mode) . ("basedpyright-langserver"))
+              ((python-mode python-ts-mode python-base-mode) . ("basedpyright-langserver" "--stdio"))
              ((ess-r-mode :language-id "r")
               . ("R" "--no-echo" "-e" "languageserver::run()"))))
     (add-to-list 'eglot-server-programs entry)))

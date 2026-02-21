@@ -12,6 +12,8 @@
   :after (consult project)
   :custom (consult-project-function #'consult-project-extra-project-fn)
   :bind (("C-c p f" . consult-project-extra-find)
+         ("C-c p r" . consult-project-extra-ripgrep)
+         ("C-c f" . consult-project-extra-find)
          ("C-c p o" . consult-project-extra-find-other-window)))
 
 (defun project-auto-remember ()

@@ -41,6 +41,9 @@
 
 (use-package jupyter
   :defer t
+  :bind (("C-c y r" . jupyter-run-repl)
+         ("C-c y c" . jupyter-connect-repl)
+         ("C-c y a" . jupyter-repl-associate-buffer))
   :commands (jupyter-run-repl
              jupyter-connect-repl
              jupyter-repl-associate-buffer))

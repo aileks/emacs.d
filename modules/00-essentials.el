@@ -27,12 +27,15 @@
 (column-number-mode 1)
 (recentf-mode 1)
 (global-auto-revert-mode 1)
+(when (fboundp 'global-completion-preview-mode)
+  (global-completion-preview-mode -1))
 
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
-(add-hook 'text-mode-hook #'display-line-numbers-mode)
+(add-hook 'markdown-mode-hook #'display-line-numbers-mode)
 (add-hook 'org-mode-hook #'display-line-numbers-mode)
 
 (use-package olivetti
+  :commands (olivetti-mode)
   :hook ((text-mode . olivetti-mode)
          (org-mode . olivetti-mode))
   :custom
@@ -97,7 +100,9 @@
 (use-package ws-butler
   :hook (prog-mode . ws-butler-mode))
 
-(use-package move-text)
+(use-package move-text
+  :bind (("M-p" . move-text-up)
+         ("M-n" . move-text-down)))
 (defun indent-region-advice (&rest ignored)
   (let ((deactivate deactivate-mark))
     (if (region-active-p)

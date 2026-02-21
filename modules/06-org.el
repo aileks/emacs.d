@@ -80,6 +80,7 @@
 (use-package consult-notes
   :ensure (:host github :repo "mclear-tools/consult-notes")
   :after consult
+  :bind (("C-c N" . consult-notes))
   :commands (consult-notes consult-notes-search-in-all-notes)
   :init
   (setq consult-notes-file-dir-sources
