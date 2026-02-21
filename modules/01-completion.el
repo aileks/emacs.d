@@ -61,10 +61,12 @@
   (add-to-list 'completion-at-point-functions #'cape-file)
   (add-to-list 'completion-at-point-functions #'cape-keyword))
 
+;; Use Corfu UI for dabbrev (default binding M-/ calls dabbrev-expand).
+(define-key global-map [remap dabbrev-expand] #'dabbrev-completion)
+
 (use-package avy)
 (use-package helpful)
 
 (use-package savehist
   :ensure nil
   :init (savehist-mode))
-

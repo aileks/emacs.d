@@ -1,9 +1,9 @@
 ;;; -*- lexical-binding: t -*-
 
 (use-package which-key
-  :defer 5
+  :demand t
   :custom (which-key-idle-delay 0.3)
-  :config (which-key-mode))
+  :config (which-key-mode 1))
 
 (use-package mood-line
   :config (mood-line-mode))
