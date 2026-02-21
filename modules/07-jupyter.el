@@ -32,6 +32,20 @@
 
 (add-hook 'python-base-mode-hook #'cfg/pyvenv-auto-activate)
 
+(defun cfg/ipynb-open-mode ()
+  "Open `.ipynb` via `code-cells` when available."
+  (interactive)
+  (if (require 'code-cells nil t)
+      (code-cells-convert-ipynb)
+    (unless (fboundp 'json-mode)
+      (require 'json-mode nil t))
+    (if (fboundp 'json-mode)
+        (json-mode)
+      (fundamental-mode))
+    (message "code-cells unavailable; opened .ipynb without conversion")))
+
+(add-to-list 'auto-mode-alist '("\\.ipynb\\'" . cfg/ipynb-open-mode))
+
 (use-package pyvenv
   :defer t
   :init
@@ -50,6 +64,9 @@
 
 (use-package code-cells
   :defer t
+  :commands (code-cells-convert-ipynb
+             code-cells-mode
+             code-cells-mode-maybe)
   :hook ((python-base-mode . code-cells-mode-maybe)
          (julia-mode . code-cells-mode-maybe)
          (ess-r-mode . code-cells-mode-maybe))
@@ -59,7 +76,7 @@
         '(("jupytext" "--to" "ipynb")
           ("jupytext" "--to" "auto:percent")
           code-cells--guess-mode
-          code-cells-mode))
+          code-cells-convert-ipynb-hook))
   (with-eval-after-load 'code-cells
     (define-key code-cells-mode-map (kbd "C-c C-c") #'code-cells-eval)
     (define-key code-cells-mode-map (kbd "C-c C-n") #'code-cells-forward-cell)

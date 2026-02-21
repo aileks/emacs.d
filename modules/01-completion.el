@@ -62,7 +62,6 @@
          ("C-c s l" . consult-line)
          ("C-c s f" . consult-find)
          ("C-c s m" . consult-imenu)))
-(setq completion-in-region-function #'consult-completion-in-region)
 (use-package consult-dir
   :after consult
   :bind (("C-x C-d" . consult-dir)))
