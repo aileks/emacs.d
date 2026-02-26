@@ -7,12 +7,6 @@
   :config
   (vertico-mode 1))
 
-(defun cfg/corfu-auto-enable ()
-  (setq-local corfu-auto t))
-
-(add-hook 'prog-mode-hook #'cfg/corfu-auto-enable)
-(add-hook 'org-mode-hook #'cfg/corfu-auto-enable)
-
 (use-package corfu
   :demand t
   :custom
@@ -25,7 +19,6 @@
   :config
   (global-corfu-mode)
   (require 'corfu-popupinfo)
-  (corfu-popupinfo-mode 1)
   (define-key corfu-map (kbd "TAB") nil)
   (define-key corfu-map (kbd "<tab>") nil)
   (define-key corfu-map (kbd "<backtab>") nil)
@@ -41,8 +34,6 @@
   (completion-category-defaults nil))
 (setq orderless-matching-styles
       '(orderless-literal orderless-regexp orderless-flex))
-;; Never auto-open *Completions*.
-(setq completion-auto-help nil)
 
 (use-package hotfuzz
   :after vertico

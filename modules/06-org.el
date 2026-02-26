@@ -1,7 +1,5 @@
 ;;; -*- lexical-binding: t -*-
 
-;; read_when: update this file when changing note layout, capture flow, or Org export defaults.
-
 (use-package org
   :ensure nil
   :init
@@ -88,3 +86,13 @@
   :config
   (when (locate-library "denote")
     (consult-notes-denote-mode 1)))
+
+(use-package org-superstar
+  :hook (org-mode . org-superstar-mode)
+  :config
+  (set-face-attribute 'org-superstar-item nil :height 1.2)
+  (set-face-attribute 'org-superstar-header-bullet nil :height 1.2)
+  (set-face-attribute 'org-superstar-leading nil :height 1.3)
+  (setq org-superstar-headline-bullets-list '("◉" ("🞛" ?◈) "○" "▷")
+        org-superstar-cycle-headline-bullets nil
+        org-superstar-leading-fallback ?\s))
