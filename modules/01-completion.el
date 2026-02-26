@@ -10,7 +10,7 @@
 (use-package corfu
   :demand t
   :custom
-  (corfu-auto nil)
+  (corfu-auto t)
   (corfu-cycle t)
   (corfu-preselect 'first)
   (corfu-preview-current nil)
@@ -24,9 +24,7 @@
   (define-key corfu-map (kbd "<backtab>") nil)
   (define-key corfu-map (kbd "S-TAB") nil)
   (define-key corfu-map (kbd "<return>") #'corfu-insert)
-  (set-face-attribute 'corfu-default nil :height 1.0)
-  (set-face-attribute 'corfu-current nil :height 1.0)
-  (set-face-attribute 'corfu-popupinfo nil :height 1.0))
+  (corfu-echo-mode 1))
 
 (use-package orderless
   :custom
