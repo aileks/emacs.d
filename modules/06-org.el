@@ -43,14 +43,8 @@
   (add-hook 'org-mode-hook #'visual-line-mode)
   (add-hook 'org-mode-hook #'org-indent-mode)
   (add-hook 'org-mode-hook
-            (lambda ()
-              (setq-local electric-indent-chars (remq ?\n electric-indent-chars))))
-  (add-hook 'org-mode-hook
-            (lambda ()
-              (push '("[ ]" . "☐") prettify-symbols-alist)
-              (push '("[X]" . "☑") prettify-symbols-alist)
-              (push '("[-]" . "⊟") prettify-symbols-alist)
-              (prettify-symbols-mode 1)))
+             (lambda ()
+               (setq-local electric-indent-chars (remq ?\n electric-indent-chars))))
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((python . t)
@@ -96,13 +90,7 @@
   (when (locate-library "denote")
     (consult-notes-denote-mode 1)))
 
-(use-package org-superstar
-  :after org
-  :hook (org-mode . org-superstar-mode)
-  :custom
-  (org-superstar-headline-bullets-list '("◉" "○" "✸" "✿" "✤" "✜" "◆" "▶"))
-  (org-superstar-remove-leading-stars t)
-  (org-superstar-item-bullet-alist
-   '((?- . ?•)
-     (?+ . ?◦)
-     (?* . ?➤))))
+(use-package org-modern
+  :hook (org-mode . org-modern-mode)
+  :config
+  (global-org-modern-mode))

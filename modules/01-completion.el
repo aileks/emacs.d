@@ -66,8 +66,13 @@
   (add-to-list 'completion-at-point-functions #'cape-file)
   (add-to-list 'completion-at-point-functions #'cape-keyword))
 
-(global-set-key (kbd "M-/") #'dabbrev-expand)
-(global-set-key (kbd "C-M-/") #'dabbrev-completion)
+(setq completion-at-point-functions
+      (remove 'dabbrev-capf completion-at-point-functions))
+
+(use-package jinx
+  :hook (emacs-startup . global-jinx-mode)
+  :bind (("M-$" . jinx-correct)
+         ("C-M-$" . jinx-languages)))
 
 (use-package avy
   :bind (("M-j" . avy-goto-char-timer)))
