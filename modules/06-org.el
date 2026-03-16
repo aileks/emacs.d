@@ -42,6 +42,15 @@
           (,(expand-file-name "notes.org" org-directory) :maxlevel . 3)))
   (add-hook 'org-mode-hook #'visual-line-mode)
   (add-hook 'org-mode-hook #'org-indent-mode)
+  (add-hook 'org-mode-hook
+            (lambda ()
+              (setq-local electric-indent-chars (remq ?\n electric-indent-chars))))
+  (add-hook 'org-mode-hook
+            (lambda ()
+              (push '("[ ]" . "☐") prettify-symbols-alist)
+              (push '("[X]" . "☑") prettify-symbols-alist)
+              (push '("[-]" . "⊟") prettify-symbols-alist)
+              (prettify-symbols-mode 1)))
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((python . t)
