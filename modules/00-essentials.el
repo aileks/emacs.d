@@ -115,3 +115,12 @@
 
 (advice-add 'move-text-up :after 'indent-region-advice)
 (advice-add 'move-text-down :after 'indent-region-advice)
+
+(defun cfg/maybe-disable-electric-indent ()
+  "Disable electric-indent for remote C/C++ files."
+  (when (and (file-remote-p default-directory)
+             (derived-mode-p 'c-mode 'c++-mode 'c-ts-mode 'c++-ts-mode))
+    (electric-indent-local-mode -1)))
+
+(add-hook 'c-mode-hook #'cfg/maybe-disable-electric-indent)
+(add-hook 'c++-mode-hook #'cfg/maybe-disable-electric-indent)
