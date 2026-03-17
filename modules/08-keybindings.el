@@ -130,3 +130,6 @@
 (global-set-key (kbd "C-c y a") #'jupyter-repl-associate-buffer)
 (global-set-key (kbd "C-c m") #'marginalia-cycle)
 (global-set-key (kbd "C-c p c") #'compile)
+
+(global-set-key (kbd "C-c >") #'indent-rigidly-right-to-tab-stop)
+(global-set-key (kbd "C-c <") #'indent-rigidly-left-to-tab-stop)
