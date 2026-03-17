@@ -30,6 +30,9 @@
 (when (fboundp 'global-completion-preview-mode)
   (global-completion-preview-mode -1))
 
+(require 'tramp)
+(setq tramp-use-ssh-controlmaster-options nil)
+
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 (add-hook 'markdown-mode-hook #'display-line-numbers-mode)
 (add-hook 'org-mode-hook #'display-line-numbers-mode)
