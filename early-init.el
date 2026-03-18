@@ -1,9 +1,11 @@
 ;;; -*- lexical-binding: t -*-
 
+(setq warning-minimum-level :error)
+
 (setq default-frame-alist '((undecorated . t)))
 (set-frame-parameter (selected-frame) 'alpha '(99 . 99))
 (add-to-list 'default-frame-alist '(alpha . (99 . 99)))
-(add-to-list 'default-frame-alist '(font . "CommitMono Nerd Font Mono-14"))
+(add-to-list 'default-frame-alist '(font . "CommitMono Nerd Font Mono-12"))
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
